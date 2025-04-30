@@ -624,7 +624,7 @@ document.getElementById('SalvarCSV').addEventListener('click', async () => {
     return;
   }
 
-  const token = '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'; // 🔒 Seu token com permissão repo
+  const token = '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'; // 🔒 Seu token com permissão repo
   const usuario = 'MauricioCruzdosSantos';
   const repo = 'MMControleFinaceiro';
   const caminho = 'backup_financeiro.csv';
@@ -694,7 +694,7 @@ document.getElementById('BuscarCSV').addEventListener('click', async () => {
   const usuario = 'MauricioCruzdosSantos';
   const repo = 'MMControleFinaceiro';
   const caminho = 'backup_financeiro.csv';
-  const token = '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'; // Seu token com permissão repo
+  const token = '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'; // Seu token com permissão repo
 
   try {
     const resposta = await fetch(`https://api.github.com/repos/${usuario}/${repo}/contents/${caminho}`, {
