@@ -2,7 +2,7 @@
     "name": "M&M Finanças",
     "short_name": "M&M",
     "description": "Para calcular todas as Finanças",
-    "start_url": "AppFinançasMM.html",
+    "start_url": "./AppFinançasMM.html",
     "background_color": "#f1c40f",
     "theme_color": "#f39c12",
     "display": "standalone",
