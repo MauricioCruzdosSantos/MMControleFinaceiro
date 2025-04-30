@@ -21,6 +21,14 @@ jobs:
           # Cria ou atualiza o arquivo localmente
           echo "$CONTENT" > $FILE
 
+          # Se houver um SHA, usamos ele para substituir o arquivo
+          if [ -n "${{ github.event.client_payload.sha }}" ]; then
+            git fetch origin
+            git checkout main
+            git reset --hard origin/main
+            git rm -f $FILE
+          fi
+
           # Configura Git
           git config user.name "github-actions"
           git config user.email "actions@github.com"
