@@ -29,22 +29,23 @@ jobs:
           git commit -m "🚀 Atualização automática do CSV"
           git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
 
-          name: Buscar e Processar CSV
+          name: Buscar CSV
 
 on:
   repository_dispatch:
-    types: [buscar_csv]
+    types: [buscar_csv]  # Nome do evento que você está disparando
 
 jobs:
-  processar-csv:
+  buscar_csv:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Buscar arquivo CSV
         run: |
-          echo "Baixando o arquivo CSV..."
+          echo "Buscando CSV..."
+          # Adicione aqui o comando para buscar o arquivo CSV, por exemplo:
           curl -L -o backup_financeiro.csv https://raw.githubusercontent.com/MauricioCruzdosSantos/MMControleFinaceiro/main/backup_financeiro.csv
 
       - name: Processar CSV e retornar resposta
