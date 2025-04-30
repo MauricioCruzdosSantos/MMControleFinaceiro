@@ -28,3 +28,31 @@ jobs:
           git add $FILE
           git commit -m "🚀 Atualização automática do CSV"
           git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
+
+          name: Buscar e Processar CSV
+
+on:
+  repository_dispatch:
+    types: [buscar_csv]
+
+jobs:
+  processar-csv:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Buscar arquivo CSV
+        run: |
+          echo "Baixando o arquivo CSV..."
+          curl -L -o backup_financeiro.csv https://raw.githubusercontent.com/MauricioCruzdosSantos/MMControleFinaceiro/main/backup_financeiro.csv
+
+      - name: Processar CSV e retornar resposta
+        run: |
+          # Processar o arquivo CSV conforme necessário. 
+          # Por exemplo, você pode gerar um JSON e enviá-lo de volta para o frontend.
+          cat backup_financeiro.csv
+          # Exemplo de código para processar o CSV
+          # converter CSV em JSON ou qualquer outra ação
+          # Este é um passo básico para exemplo, ajuste conforme necessário
+
