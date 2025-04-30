@@ -715,7 +715,6 @@ document.getElementById('BuscarCSV').addEventListener('click', async () => {
       };
     });
 
-    // Atualiza a interface
     atualizarTabela();
     atualizarResumo();
     atualizarGrafico();
@@ -726,6 +725,3 @@ document.getElementById('BuscarCSV').addEventListener('click', async () => {
     alert("❌ Não foi possível carregar os dados do GitHub.");
   }
 });
-
-
-//📂
