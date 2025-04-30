@@ -691,11 +691,16 @@ document.getElementById('SalvarCSV').addEventListener('click', async () => {
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 document.getElementById('BuscarCSV').addEventListener('click', async () => {
-  const url = 'https://raw.githubusercontent.com/MauricioCruzdosSantos/MMControleFinaceiro/main/backup_financeiro.csv';
+  const usuario = 'MauricioCruzdosSantos';
+  const repo = 'MMControleFinaceiro';
+  const caminho = 'backup_financeiro.csv';
+  const url = `https://raw.githubusercontent.com/${usuario}/${repo}/main/${caminho}`;
 
   try {
     const resposta = await fetch(url);
-    if (!resposta.ok) throw new Error('Erro ao buscar CSV');
+    if (!resposta.ok) {
+      throw new Error(`Erro ao buscar o arquivo CSV do GitHub. Código: ${resposta.status}`);
+    }
 
     const csv = await resposta.text();
 
@@ -710,17 +715,16 @@ document.getElementById('BuscarCSV').addEventListener('click', async () => {
       };
     });
 
+    // Atualiza a interface
     atualizarTabela();
     atualizarResumo();
     atualizarGrafico();
 
-    alert('📥 CSV carregado com sucesso do GitHub!');
+    alert('📥 Dados carregados com sucesso do GitHub!');
   } catch (erro) {
-    console.error("❌ Erro ao carregar CSV:", erro);
-    alert("❌ Não foi possível carregar os dados.");
+    console.error("❌ Erro ao carregar CSV do GitHub:", erro);
+    alert("❌ Não foi possível carregar os dados do GitHub.");
   }
 });
-
-
 
 //📂
