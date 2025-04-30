@@ -17,25 +17,24 @@ jobs:
         run: |
           FILE="backup_financeiro.csv"
           CONTENT="$(echo "${{ github.event.client_payload.csv }}" | base64 -d)"
-
+          
           # Cria ou atualiza o arquivo localmente
           echo "$CONTENT" > $FILE
-
-          # Se houver um SHA, usamos ele para substituir o arquivo
-          if [ -n "${{ github.event.client_payload.sha }}" ]; then
-            git fetch origin
-            git checkout main
-            git reset --hard origin/main
-            git rm -f $FILE
-          fi
+          echo "Arquivo CSV atualizado."
 
           # Configura Git
           git config user.name "github-actions"
           git config user.email "actions@github.com"
 
+          # Verificando se há alterações antes de fazer commit
+          git status
           git add $FILE
-          git commit -m "🚀 Atualização automática do CSV"
-          git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
+          git commit -m "🚀 Atualização automática do CSV" || echo "Nenhuma alteração para commit."
+
+          # Fazendo o push para o repositório
+          git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git HEAD:main || echo "Erro ao fazer push."
+
+          echo "Processo concluído!"
 
           name: Buscar CSV
 
