@@ -691,26 +691,13 @@ document.getElementById('SalvarCSV').addEventListener('click', async () => {
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 document.getElementById('BuscarCSV').addEventListener('click', async () => {
-  const usuario = 'MauricioCruzdosSantos';
-  const repo = 'MMControleFinaceiro';
-  const caminho = 'backup_financeiro.csv';
-  const token = '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'; // Seu token com permissão repo
+  const url = 'https://raw.githubusercontent.com/MauricioCruzdosSantos/MMControleFinaceiro/main/backup_financeiro.csv';
 
   try {
-    const resposta = await fetch(`https://api.github.com/repos/${usuario}/${repo}/contents/${caminho}`, {
-      headers: {
-        Authorization: `token ${token}`,
-        Accept: 'application/vnd.github.v3+json'
-      }
-    });
+    const resposta = await fetch(url);
+    if (!resposta.ok) throw new Error('Erro ao buscar CSV');
 
-    if (!resposta.ok) {
-      throw new Error('Erro ao buscar o arquivo CSV do GitHub.');
-    }
-
-    const dados = await resposta.json();
-    const conteudoBase64 = dados.content.replace(/\n/g, '');
-    const csv = decodeURIComponent(escape(atob(conteudoBase64)));
+    const csv = await resposta.text();
 
     const linhas = csv.split('\n').slice(1); // pula o cabeçalho
     registros = linhas.filter(l => l.trim() !== '').map(linha => {
@@ -723,17 +710,17 @@ document.getElementById('BuscarCSV').addEventListener('click', async () => {
       };
     });
 
-    // Atualiza a interface
     atualizarTabela();
     atualizarResumo();
     atualizarGrafico();
 
-    alert('📥 Dados carregados com sucesso do GitHub!');
+    alert('📥 CSV carregado com sucesso do GitHub!');
   } catch (erro) {
-    console.error("❌ Erro ao carregar CSV do GitHub:", erro);
-    alert("❌ Não foi possível carregar os dados do GitHub.");
+    console.error("❌ Erro ao carregar CSV:", erro);
+    alert("❌ Não foi possível carregar os dados.");
   }
 });
+
 
 
 //📂
