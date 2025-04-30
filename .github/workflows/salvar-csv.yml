@@ -1,1 +1,25 @@
+name: Salvar CSV no Repositório
+
+on:
+  workflow_dispatch: # disparado manualmente (pode mudar para cron, push, etc.)
+  repository_dispatch: # permite disparar via fetch no navegador
+
+jobs:
+  salvar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v3
+
+      - name: Atualizar arquivo CSV
+        run: |
+          echo "${{ github.event.client_payload.csv }}" | base64 -d > dados.csv
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add dados.csv
+          git commit -m "Atualização automática do CSV"
+          git push
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
