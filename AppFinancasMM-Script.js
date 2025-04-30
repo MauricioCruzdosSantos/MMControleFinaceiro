@@ -694,7 +694,7 @@ document.getElementById('BuscarCSV').addEventListener('click', async () => {
   const usuario = 'MauricioCruzdosSantos';
   const repo = 'MMControleFinaceiro';
   const caminho = 'backup_financeiro.csv';
-  const url = `https://raw.githubusercontent.com/MauricioCruzdosSantos/MMControleFinaceiro/refs/heads/main/backup_financeiro.csv`;
+  const url = `https://raw.githubusercontent.com/MauricioCruzdosSantos/MMControleFinaceiro/main/backup_financeiro.csv`;
 
   try {
     const resposta = await fetch(url);
