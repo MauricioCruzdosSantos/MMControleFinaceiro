@@ -1,3 +1,15 @@
 data,tipo,valor,descricao
-2025-05-02,faturamento,"6.516,51",Comercio
-2025-05-02,Investimentos,"1.651,64",Fornecedor
+2025-01-01,faturamento,"504,00",
+2025-01-02,faturamento,"405,00",
+2025-01-02,Investimentos,"558,25",
+2025-01-03,faturamento,"1.366,20",
+2025-01-03,Investimentos,"579,00",
+2025-01-04,faturamento,"2.462,50",
+2025-01-04,Investimentos,"1.795,00",
+2025-01-05,faturamento,"1.193,40",
+2025-01-06,faturamento,"1.128,10",
+2025-01-06,Investimentos,"2.122,73",
+2025-01-07,faturamento,"1.746,95",
+2025-01-07,Investimentos,"1.253,70",
+2025-01-08,faturamento,"585,55",
+2025-01-08,Investimentos,"3.791,45",
