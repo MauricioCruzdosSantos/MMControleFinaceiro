@@ -23,7 +23,6 @@ data,tipo,valor,descricao
 2025-01-13,faturamento,"794,35",
 2025-01-13,Investimentos,"832,00",
 2025-01-14,faturamento,"748,15",
-2025-01-14,Investimentos,"1.645,08",
 2025-01-14,Pagamentos de energia,"1.191,89",Placa Solar
 2025-01-15,faturamento,"948,30",
 2025-01-15,Investimentos,"599,20",
@@ -56,3 +55,7 @@ data,tipo,valor,descricao
 2025-01-30,Investimentos,"824,00",
 2025-01-31,faturamento,"1.642,15",
 2025-01-31,Investimentos,"774,02",
+2025-01-14,Investimentos,"1.530,08",
+2025-01-14,Despesa de Casa,"115,00",Internet
+2025-01-31,Despesa de Casa,"1.950,00",Comida
+2025-01-31,Pagamento de funcionários,"1.800,00",
